@@ -10,10 +10,11 @@ void setBuildStatus(String message, String state) {
 
 pipeline {
     agent any
-    stages {
-        options {
+    options {
         buildDiscarder(logRotator(numToKeepStr:'10', artifactNumToKeepStr:'10'))
   }
+
+    stages {
         stage('Build package') {
             options { timeout(time:20,unit:'MINUTES') }
             steps {
